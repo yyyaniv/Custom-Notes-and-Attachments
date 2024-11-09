@@ -1,0 +1,22 @@
+<template>
+    <lightning-card variant="Narrow" title={cardTitle} icon-name="standard:file">
+        <lightning-button label="Upload files" onclick={handleUploadFiles} slot="actions"></lightning-button>
+        <lightning-datatable
+            lwc:if={showAttachments}
+            columns={columns}
+            data={attachments}
+            key-field={keyField}
+            hide-checkbox-column
+            resize-column-disabled
+            show-row-number-column
+            onrowaction={handleRowAction}
+        ></lightning-datatable>
+        <p class="slds-var-p-around_medium" lwc:else>No files attached!</p>
+        <div lwc:if={showFooter} slot="footer">
+            <a class="slds-card__footer-action" onclick={handleViewAllClick}
+                >View All
+                <span class="slds-assistive-text">All Notes & Attachments</span>
+            </a>
+        </div>
+    </lightning-card>
+</template>
